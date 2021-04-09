@@ -1,0 +1,135 @@
+@import 'settings';
+
+
+  @mixin themify($background,$text,$item,$header){
+    #root{
+      background-color: $background;
+      color:$text;
+    }
+    #list{
+      background-color: $item;
+    }
+    h3{
+      color:$header;
+    }
+    #addButton{
+      background-color: $header;
+      color:$text;
+    }
+  }
+
+
+  #root{
+    position:absolute;
+    margin:0;
+    height:100%;
+    
+    width:calc(100vw - (100vw - 100%));
+    #mainDiv{
+      height:$fullHeight;
+      #themeContainer{
+        height:$fullHeight;
+      }
+    }
+  }
+  #listContainer{
+    width: 80%;
+    margin:auto;
+    height: inerhit;
+    backdrop-filter: contrast(0.9);
+    }
+    #list{
+      margin: 10vh auto;
+      width: 80%;
+    }
+    .list-item{
+      padding:1em;
+      margin:0.5em;
+      font-size: 1rem;
+      small{
+        float:right;
+        padding-left: 1em;
+        opacity: .1;
+        &:hover{
+          opacity: 1;
+        }
+      }
+      p{
+        position:absolute;
+        width:50%;
+        @media (max-width: #{$mobile}) {
+          width:40%;
+        }
+       
+        margin:0 1em;
+        padding:0.1em 0.5em;
+        &:focus{
+          outline-color: gray;
+          outline-style: dotted;
+        }
+        &:empty:hover::before {
+          content: 'type here';
+          opacity: 0.25;
+        }
+        
+      }
+      h3{
+        @extend p
+      }
+      input[type='checkbox']{
+        margin-right: 1em;
+      }
+    }
+.hide{
+  visibility: hidden;
+}
+.notDisplayed{
+  display: none !important;
+}
+
+.light{
+    @include themify($lightBackground,$lightColor,$lightItem,$lightHeader)
+}
+.inline{
+  display: inline;
+}
+.done{
+  text-decoration: line-through;
+}
+
+.dark{
+  @include themify($darkBackground,$darkColor,$darkItem,$darkHeader)
+}
+
+@media (max-width: #{$mobile}) {
+  
+}
+
+body{
+  position:absolute;
+  width:100%;
+  height:100%;
+  @media (max-width: #{$mobile}) {
+  width:100vw;
+  }
+}
+#themeChanger{
+  .react-toggle{
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
+
+}}
+
+.react-toggle--checked .react-toggle-track {
+  background-color: white!important;
+}
+#addButton{
+  position:relative;
+  border-radius: 50%;
+  height:5%;
+  font-size: 2em;
+  border:none;
+  text-align: center;
+  vertical-align:baseline;
+}
